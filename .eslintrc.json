@@ -8,5 +8,9 @@
   "env": {
     "browser": true,
     "node": true
+  },
+  "rules": {
+    "quotes": ["error", "single"],
+    "prettier/prettier": ["error", { "singleQuote": true }]
   }
 }
