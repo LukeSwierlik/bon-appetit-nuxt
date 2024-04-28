@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCurrency } from '~/composables/useCurrency';
+import composables from '~/composables/';
 
 import type { PropType } from 'vue';
 
@@ -28,7 +28,7 @@ const sum = computed<number>(() => {
   return sum;
 });
 
-const { currency } = useCurrency(sum);
+const { currency } = composables.useCurrency(sum);
 </script>
 
 <template>

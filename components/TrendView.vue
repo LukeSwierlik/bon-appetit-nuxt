@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCurrency } from '~/composables/useCurrency';
+import composables from '~/composables';
 
 const props = defineProps({
   title: {
@@ -31,7 +31,7 @@ const icon = computed<string>(() =>
     ? 'i-heroicons-arrow-trending-up'
     : 'i-heroicons-arrow-trending-down',
 );
-const { currency } = useCurrency(amount);
+const { currency } = composables.useCurrency(amount);
 
 const percentageTrend = computed<string>(() => {
   if (props.amount === 0 || props.lastAmount === 0) {

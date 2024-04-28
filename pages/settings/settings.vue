@@ -6,7 +6,7 @@ import { transactionViewOptions } from '~/utils/common.constants';
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 const { toastSuccess, toastError } = useAppToast();
-const pending = ref(false);
+const pending = ref<boolean>(false);
 const state = ref({
   transactionView:
     user.value?.user_metadata?.transaction_view ?? transactionViewOptions[1],

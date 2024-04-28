@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from '#imports';
-import type { Modes } from '~/utils/common.interfaces';
 import { modes, nextModeIcons } from '~/utils/common.constants';
+
+import type { Modes } from '~/utils/common.interfaces';
 
 // Composables
 const colorMode = useColorMode();

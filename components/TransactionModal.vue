@@ -28,7 +28,7 @@ const incomeSchema = z.object({
 });
 const expenseSchema = z.object({
   type: z.literal('Expense'),
-  category: z.enum(categories),
+  category: z.enum(categories as any),
 });
 const investmentSchema = z.object({
   type: z.literal('Investment'),

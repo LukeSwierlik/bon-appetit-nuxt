@@ -2,7 +2,7 @@
 import { transactionViewOptions } from '~/utils/common.constants';
 import { useSelectedTimePeriod } from '~/composables/useSelectedTimePeriod';
 import { useFetchTransactions } from '~/composables/useFetchTransactions';
-import Trend from '~/components/Trend.vue';
+import Trend from '~/components/TrendView.vue';
 
 import type { Period } from '~/utils/common.interfaces';
 import TransactionModal from '~/components/TransactionModal.vue';

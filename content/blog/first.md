@@ -15,11 +15,12 @@ head:
 publishedAt: 2023-03-12 17:15:00
 toc: true
 ---
+
 # First post on our website
 
 ## Introduction
 
-This is some text. *This is italic*.
+This is some text. _This is italic_.
 
 ## Second Part
 
@@ -49,6 +50,6 @@ Tables:
 
 ```html
 <html>
- <div>Hello!</div>
+  <div>Hello!</div>
 </html>
 ```
