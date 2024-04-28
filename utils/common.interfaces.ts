@@ -7,3 +7,10 @@ export interface Repo {
   name: string;
   id: string;
 }
+
+export type Period = 'Yearly' | 'Monthly' | 'Daily';
+
+export interface SelectedTimePeriod {
+  from: Date;
+  to: Date;
+}

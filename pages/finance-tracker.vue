@@ -1,3 +1,46 @@
+<script setup lang="ts">
+import { transactionViewOptions } from '~/utils/common.constants';
+import { useSelectedTimePeriod } from '~/composables/useSelectedTimePeriod';
+import { useFetchTransactions } from '~/composables/useFetchTransactions';
+import Trend from '~/components/Trend.vue';
+
+import type { Period } from '~/utils/common.interfaces';
+import TransactionModal from '~/components/TransactionModal.vue';
+import DailyTransactionSummary from '~/components/DailyTransactionSummary.vue';
+import TransactionView from '~/components/TransactionView.vue';
+
+const user = useSupabaseUser();
+
+const selectedView = ref<Period>(
+  user.value?.user_metadata.transaction_view ?? transactionViewOptions[1],
+);
+const isOpen = ref<boolean>(false);
+
+const { current, previous } = useSelectedTimePeriod(selectedView);
+
+const {
+  pending,
+  refresh,
+  transactions: {
+    incomeCount,
+    expenseCount,
+    incomeTotal,
+    expenseTotal,
+    grouped: { byDate },
+  },
+} = useFetchTransactions(current);
+
+const {
+  refresh: refreshPrevious,
+  transactions: {
+    incomeTotal: prevIncomeTotal,
+    expenseTotal: prevExpenseTotal,
+  },
+} = useFetchTransactions(previous);
+
+await refreshPrevious();
+</script>
+
 <template>
   <section class="flex items-center justify-between mb-10">
     <h1 class="text-4xl font-extrabold">Summary</h1>
@@ -75,36 +118,3 @@
     <USkeleton v-for="i in 4" :key="i" class="h-8 w-full mb-2" />
   </section>
 </template>
-
-<script setup lang="ts">
-import { transactionViewOptions } from '~/utils/common.constants';
-
-const user = useSupabaseUser();
-const selectedView = ref(
-  user.value?.user_metadata?.transaction_view ?? transactionViewOptions[1],
-);
-const isOpen = ref(false);
-const { current, previous } = useSelectedTimePeriod(selectedView);
-
-const {
-  pending,
-  refresh,
-  transactions: {
-    incomeCount,
-    expenseCount,
-    incomeTotal,
-    expenseTotal,
-    grouped: { byDate },
-  },
-} = useFetchTransactions(current);
-await refresh();
-
-const {
-  refresh: refreshPrevious,
-  transactions: {
-    incomeTotal: prevIncomeTotal,
-    expenseTotal: prevExpenseTotal,
-  },
-} = useFetchTransactions(previous);
-await refreshPrevious();
-</script>

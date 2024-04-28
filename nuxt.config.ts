@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
     '@nuxt/content',
+    '@nuxtjs/supabase',
   ],
   content: {
     highlight: {
@@ -18,6 +19,14 @@ export default defineNuxtConfig({
         default: 'min-light',
         dark: 'min-dark',
       },
+    },
+  },
+  supabase: {
+    redirect: true,
+  },
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.BASE_URL ?? 'http://localhost:3000',
     },
   },
 });

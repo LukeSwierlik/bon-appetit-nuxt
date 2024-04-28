@@ -13,6 +13,9 @@
       <li>
         <NuxtLink to="/blog" class="link">Blog</NuxtLink>
       </li>
+      <li>
+        <NuxtLink to="/finance-tracker" class="link">Finance Tracker</NuxtLink>
+      </li>
     </ul>
   </nav>
 </template>
@@ -22,3 +25,5 @@
   @apply p-1 hover:bg-gray-200 dark:hover:bg-gray-800 text-2xl md:text-base;
 }
 </style>
+<script setup lang="ts">
+</script>
